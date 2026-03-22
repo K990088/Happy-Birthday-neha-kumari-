@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎂</title>
+
+<style>
+body {
+  margin:0;
+  font-family:sans-serif;
+  background:linear-gradient(135deg,#1a0000,#000);
+  color:white;
+  text-align:center;
+}
+
+/* Heading */
+#typing {
+  font-size:26px;
+  font-weight:bold;
+  margin-top:30px;
+  min-height:40px;
+}
+
+/* Card */
+.card {
+  margin:20px;
+  padding:15px;
+  background:rgba(255,255,255,0.1);
+  border-radius:15px;
+}
+
+/* Images */
+.gallery {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.gallery img {
+  width:85px;
+  height:85px;
+  border-radius:15px;
+  object-fit:cover;
+}
+
+/* Cake */
+.cake img {
+  width:140px;
+  margin:20px 0;
+  animation:float 3s infinite;
+}
+@keyframes float {
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+/* Footer */
+.footer {
+  margin:20px;
+  font-size:14px;
+}
+</style>
+
+</head>
+<body>
+
+<h1 id="typing"></h1>
+
+<div class="card">
+  Wishing you endless happiness 🌸<br>
+  You deserve all smiles ✨<br><br>
+  Stay blessed, stay amazing 💖
+</div>
+
+<div class="gallery">
+  <img src="https://files.catbox.moe/v54y34.jpg">
+  <img src="https://files.catbox.moe/q70qwb.png">
+  <img src="https://files.catbox.moe/3iz38h.png">
+  <img src="https://files.catbox.moe/q61xu3.png">
+</div>
+
+<!-- Cake -->
+<div class="cake">
+  <img src="https://files.catbox.moe/7h6l6d.png">
+  <p>🎂 Happy Birthday 🎂</p>
+</div>
+
+<div class="card">
+  🌹 May your dreams shine like stars ⭐<br>
+  💫 Keep smiling always Neha 💖
+</div>
+
+<div class="footer">
+  Made with ❤️
+</div>
+
+<!-- Music -->
+<audio id="music" loop>
+  <source src="https://files.catbox.moe/2l5t6d.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Typing Effect (FIXED)
+let text = "🎂 Happy Birthday Neha Kumari 🎉";
+let i = 0;
+function typing(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing,70);
+  }
+}
+typing();
+
+// Auto Music Play Trick
+let music = document.getElementById("music");
+
+window.onload = () => {
+  music.play().catch(() => {
+    document.body.addEventListener("click", () => {
+      music.play();
+    }, {once:true});
+  });
+};
+</script>
+
+</body>
+</html>
