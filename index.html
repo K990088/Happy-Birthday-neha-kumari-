@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday 🎂</title>
+
+<style>
+body{
+  margin:0;
+  background:black;
+  color:white;
+  font-family:sans-serif;
+  overflow:hidden;
+}
+
+/* OPEN SCREEN */
+#openScreen{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:linear-gradient(135deg,#000,#1a001a);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:10;
+}
+
+#openBtn{
+  padding:12px 25px;
+  border:none;
+  background:#ff4d6d;
+  color:white;
+  border-radius:30px;
+  font-size:18px;
+  box-shadow:0 0 20px pink;
+}
+
+/* MAIN CONTENT */
+#main{
+  display:none;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  text-align:center;
+}
+
+/* TOP */
+#typing{
+  margin-top:20px;
+  font-size:26px;
+  color:#ff4d6d;
+}
+
+/* WISH */
+.wish{
+  margin:15px;
+  line-height:1.6;
+}
+
+/* CAKE */
+.cake img{
+  width:120px;
+  margin:15px 0;
+  animation:float 3s infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+/* IMAGES */
+.images{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  padding:10px;
+}
+
+.images img{
+  width:85px;
+  height:85px;
+  border-radius:15px;
+  object-fit:cover;
+  box-shadow:0 0 15px pink;
+}
+
+/* STARS */
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  animation:blink 2s infinite;
+}
+@keyframes blink{
+  0%,100%{opacity:0;}
+  50%{opacity:1;}
+}
+</style>
+
+</head>
+<body>
+
+<!-- OPEN SCREEN -->
+<div id="openScreen">
+  <h2>🎁 A Special Surprise 🎁</h2>
+  <button id="openBtn">Open 🎂</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+<h1 id="typing"></h1>
+
+<div class="wish">
+  🌸 Wishing you happiness & smiles <br>
+  ✨ You deserve the best always
+</div>
+
+<div class="cake">
+  <img src="https://files.catbox.moe/7h6l6d.png">
+</div>
+
+<div class="images">
+  <img src="https://files.catbox.moe/v54y34.jpg">
+  <img src="https://files.catbox.moe/q70qwb.png">
+  <img src="https://files.catbox.moe/3iz38h.png">
+  <img src="https://files.catbox.moe/q61xu3.png">
+</div>
+
+<div class="wish">
+  🎂 Happy Birthday Neha 🎂 <br>
+  💖 Stay happy always 💖
+</div>
+
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="https://files.catbox.moe/2l5t6d.mp3">
+</audio>
+
+<script>
+
+// OPEN BUTTON
+document.getElementById("openBtn").onclick = function(){
+  document.getElementById("openScreen").style.display="none";
+  document.getElementById("main").style.display="flex";
+
+  // MUSIC START
+  document.getElementById("music").play();
+
+  startTyping();
+};
+
+// TYPING
+function startTyping(){
+let text="🎉 Happy Birthday Neha Kumari 🎂";
+let i=0;
+function typing(){
+  if(i<text.length){
+    document.getElementById("typing").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typing,70);
+  }
+}
+typing();
+}
+
+// STARS
+for(let i=0;i<80;i++){
+  let star=document.createElement("div");
+  star.className="star";
+  star.style.top=Math.random()*100+"vh";
+  star.style.left=Math.random()*100+"vw";
+  document.body.appendChild(star);
+}
+</script>
+
+</body>
+  </html>
