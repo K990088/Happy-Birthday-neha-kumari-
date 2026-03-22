@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday NEHA 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+    }h1 {
+  font-size: 3rem;
+  margin-top: 50px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #fff; }
+  to { text-shadow: 0 0 30px #00f2ff, 0 0 60px #00f2ff; }
+}
+
+.message {
+  font-size: 1.2rem;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+.photo img {
+  width: 250px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.5);
+  transition: transform 0.5s;
+}
+
+.photo img:hover {
+  transform: scale(1.1) rotate(2deg);
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #00f2ff;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body><canvas id="fireworks"></canvas>
+
+<h1>🎂 Happy Birthday, NEHA 🎂</h1><div class="message">
+  Wishing you a day filled with love, laughter, and unforgettable moments. 💫<br><br>
+  May this year bring you closer to your dreams, surround you with positivity,
+  and fill your heart with endless happiness. 🌟<br><br>
+  You deserve all the success, joy, and love in the world.
+  Keep shining and being amazing! 💖
+</div><div class="photo">
+  <img src="https://img.sanishtech.com/u/de409a9f2cbce0b3c2597e633dc75492.png" alt="NEHA">
+</div><button onclick="playMusic()">Play Music 🎶</button>
+
+<audio id="music" src="https://drive.google.com/uc?export=download&id=1xxmSwO3SbB3HTCJDEU1hsN3-ZiyXcOqn" loop></audio>
+
+<script>
+  function playMusic() {
+    document.getElementById('music').play();
+  }
+
+  const canvas = document.getElementById('fireworks');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particles = [];
+
+  function createFirework(x, y) {
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: x,
+        y: y,
+        speedX: (Math.random() - 0.5) * 5,
+        speedY: (Math.random() - 0.5) * 5,
+        life: 100
+      });
+    }
+  }
+
+  function animate() {
+    ctx.fillStyle = 'rgba(0,0,0,0.2)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p, i) => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+      p.life--;
+
+      ctx.fillStyle = 'hsl(' + Math.random() * 360 + ', 100%, 50%)';
+      ctx.fillRect(p.x, p.y, 3, 3);
+
+      if (p.life <= 0) particles.splice(i, 1);
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  canvas.addEventListener('click', (e) => {
+    createFirework(e.clientX, e.clientY);
+  });
+
+  animate();
+</script></body>
+</html>
