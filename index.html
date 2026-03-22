@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Neha 🎂</title>
+
+<style>
+body{
+margin:0;
+overflow:hidden;
+font-family:sans-serif;
+background:black;
+color:white;
+}
+
+/* BACKGROUND */
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(45deg,#ff4d6d,#000,#ff758c);
+background-size:300% 300%;
+animation:bgmove 10s infinite linear;
+z-index:-1;
+}
+@keyframes bgmove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* LOCK */
+#lock{
+position:fixed;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+/* SLIDER */
+.slider{
+width:80%;
+max-width:300px;
+height:50px;
+border-radius:30px;
+background:rgba(255,255,255,0.2);
+position:relative;
+}
+.handle{
+width:50px;
+height:50px;
+background:#ff4d6d;
+border-radius:50%;
+position:absolute;
+left:0;
+top:0;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* MAIN */
+#main{
+display:none;
+width:100%;
+height:100vh;
+position:relative;
+}
+
+/* TOP TEXT */
+.top{
+position:absolute;
+top:8%;
+width:100%;
+text-align:center;
+}
+
+.card{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+padding:15px;
+margin:10px;
+border-radius:20px;
+}
+
+/* IMAGES */
+.bottom-images{
+position:absolute;
+bottom:20%;
+width:100%;
+display:flex;
+justify-content:center;
+gap:10px;
+}
+
+.bottom-images img{
+width:80px;
+height:110px;
+object-fit:cover;
+border-radius:15px;
+}
+
+/* BOTTOM TEXT */
+.bottom{
+position:absolute;
+bottom:3%;
+width:100%;
+text-align:center;
+font-size:14px;
+}
+
+/* FLOAT */
+.float{
+position:absolute;
+animation:float 6s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* FIREWORK */
+.fire{
+position:absolute;
+width:5px;
+height:5px;
+background:white;
+border-radius:50%;
+animation:explode 1s;
+}
+@keyframes explode{
+to{transform:scale(15);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- LOCK -->
+<div id="lock">
+<h2>🔒 Swipe to Unlock</h2>
+<div class="slider" id="slider">
+<div class="handle" id="handle">➡️</div>
+</div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+<div class="top">
+<h1 id="typing"></h1>
+
+<div class="card">
+<p>
+Wishing you endless happiness 🌸<br>
+You deserve all the smiles in the world ✨<br><br>
+Stay blessed, stay amazing 💖
+</p>
+</div>
+</div>
+
+<div class="bottom-images">
+<img src="https://files.catbox.moe/v54y34.jpg">
+<img src="https://files.catbox.moe/q70qwb.png">
+<img src="https://files.catbox.moe/3iz38h.png">
+<img src="https://files.catbox.moe/q61xu3.png">
+</div>
+
+<div class="bottom">
+<p>
+🌹 May your dreams shine bright like stars 🌟<br>
+💫 Keep smiling always Neha 💖<br>
+🌸 You are truly special 🌸
+</p>
+</div>
+
+</div>
+
+<audio id="music" src="https://files.catbox.moe/2l5t6d.mp3" loop></audio>
+
+<script>
+
+/* UNLOCK */
+let handle=document.getElementById("handle");
+let slider=document.getElementById("slider");
+
+handle.addEventListener("touchmove",(e)=>{
+let x=e.touches[0].clientX-slider.offsetLeft;
+if(x>0 && x<slider.offsetWidth-50){
+handle.style.left=x+"px";
+}
+if(x>slider.offsetWidth-60){
+unlock();
+}
+});
+
+/* TYPING FIX */
+let text="🎂 Happy Birthday Neha 🎂";
+let i=0;
+let typingElement=document.getElementById("typing");
+
+function typeEffect(){
+if(i < text.length){
+typingElement.innerHTML += text.charAt(i);
+i++;
+setTimeout(typeEffect,80);
+}
+}
+
+/* UNLOCK FUNCTION */
+function unlock(){
+document.getElementById("lock").style.display="none";
+document.getElementById("main").style.display="block";
+
+/* RESET FIX */
+typingElement.innerHTML="";
+i=0;
+typeEffect();
+
+/* MUSIC */
+let m=document.getElementById("music");
+m.play().catch(()=>{});
+}
+
+/* FLOAT */
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="float";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},500);
+
+/* FIREWORK */
+setInterval(()=>{
+let f=document.createElement("div");
+f.className="fire";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),1000);
+},1200);
+
+</script>
+
+</body>
+  </html>
