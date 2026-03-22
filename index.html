@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Neha 🎂</title>
+
+<style>
+body{
+  margin:0;
+  background:linear-gradient(135deg,#000,#1a001a);
+  font-family:sans-serif;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* MAIN */
+#main{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
+.card{
+  width:90%;
+  max-width:360px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(255,0,100,0.2);
+}
+
+/* TITLE */
+#typing{
+  font-size:26px;
+  color:#ff4d6d;
+  margin-bottom:20px;
+}
+
+/* TEXT */
+.wish{
+  font-size:15px;
+  line-height:1.8;
+  margin-bottom:25px;
+}
+
+/* IMAGES */
+.images{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+
+.images img{
+  width:80px;
+  height:80px;
+  border-radius:15px;
+  object-fit:cover;
+  box-shadow:0 0 12px pink;
+}
+
+/* FOOT TEXT */
+.end{
+  font-size:14px;
+  opacity:0.9;
+}
+</style>
+
+</head>
+<body>
+
+<div id="main">
+
+  <div class="card">
+
+    <h1 id="typing"></h1>
+
+    <div class="wish">
+      🌸 Wishing you a day full of happiness <br><br>
+      ✨ May your life be filled with success & smiles <br><br>
+      💖 Stay happy always Neha 💖
+    </div>
+
+    <div class="images">
+      <img src="https://files.catbox.moe/v54y34.jpg">
+      <img src="https://files.catbox.moe/q70qwb.png">
+      <img src="https://files.catbox.moe/3iz38h.png">
+      <img src="https://files.catbox.moe/q61xu3.png">
+    </div>
+
+    <div class="wish">
+      🎂 Happy Birthday Once Again 🎂 <br><br>
+      🌟 Keep shining like a star 🌟
+    </div>
+
+    <div class="end">
+      🌹 Made with pure friendship ❤️
+    </div>
+
+  </div>
+
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop autoplay>
+  <source src="https://files.catbox.moe/2l5t6d.mp3">
+</audio>
+
+<script>
+
+// typing
+let text="🎉 Happy Birthday Neha Kumari 🎂";
+let i=0;
+function typing(){
+  if(i<text.length){
+    document.getElementById("typing").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typing,70);
+  }
+}
+typing();
+
+// auto play fix
+let music=document.getElementById("music");
+music.play().catch(()=>{
+  document.body.addEventListener("click",()=>{
+    music.play();
+  },{once:true});
+});
+
+</script>
+
+</body>
+</html>
